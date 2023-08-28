@@ -28,13 +28,13 @@ export default class FactorBehavioral {
         this.model7 = IntervencaoComportamental;
         this.model8 = SaudeSexual;
     }
-    async newBehavioral(behavioral) {
+    async newBehavioral(behavioral: { comportamental: any; abusa: any; adesao: any; autocuidado: any; diagnostico: any; exercicio: any; intervensao: any; saude: any; }) {
         const { comportamental, abusa, adesao, autocuidado, diagnostico,
             exercicio, intervensao, saude } = behavioral;
 
-        const createBehavioral = await this.model3.create(comportamental);
+        const createBehavioral = await this.model.create(comportamental);
         const { id } = createBehavioral.toJSON();
-        const abusoSubstanciasId = await this.model.create({ ...abusa, comportamentalId: id });
+        const abusoSubstanciasId = await this.model3.create({ ...abusa, comportamentalId: id });
         const adesaoId = await this.model2.create({ ...adesao, comportamentalId: id });
         const autocuidadoId = await this.model4.create({ ...autocuidado, comportamentalId: id });
         const diagnosticoId = await this.model5.create({ ...diagnostico, comportamentalId: id });
@@ -42,8 +42,8 @@ export default class FactorBehavioral {
         const intervencoesId = (await this.model7.create({ ...intervensao, comportamentalId: id })).toJSON();
         const saudeSexualId = await this.model8.create({ ...saude, comportamentalId: id });
 
-        await abusoSubstanciasId.update({
-            abusoSubstanciasId: createBehavioral.id,
+        await createBehavioral.update({
+            abusoSubstanciasId: abusoSubstanciasId.id,
             adesaoId: adesaoId.id,
             autocuidadoId: autocuidadoId.id,
             diagnosticoId: diagnosticoId.id,
@@ -52,7 +52,63 @@ export default class FactorBehavioral {
             saudeSexualId: saudeSexualId.id
         })
         return {
-            ...abusoSubstanciasId.toJSON(), abusoSubstanciasId: createBehavioral.toJSON(), adesaoId, autocuidadoId, diagnosticoId, exercicioId, intervencoesId, saudeSexualId
+            ...createBehavioral.toJSON(), abusoSubstanciasId, adesaoId, autocuidadoId, diagnosticoId, exercicioId, intervencoesId, saudeSexualId
+        };
+    }
+
+    async findAllBehavioral() {
+        return await this.model.findAll();
+    }
+
+    async updateBehavioral(id: number, body) {
+        const { comportamental, abusa, adesao, autocuidado, diagnostico,
+            exercicio, intervensao, saude } = body;
+        const idBehavioral = await this.model.findByPk(id);
+        if (!idBehavioral) {
+            return "id não encontrado"
+        }
+        const Behavioral = await this.model.update(comportamental, {
+            where: { id }
+        });
+        const abusoSubstanciasId = await this.model3.update(abusa, {
+            where: { id }
+        });
+        const adesaoId = await this.model2.update(adesao, {
+            where: { id }
+        });
+        const autocuidadoId = await this.model4.update(autocuidado, {
+            where: { id }
+        });
+        const diagnosticoId = await this.model5.update(diagnostico, {
+            where: { id }
+        });
+        const exercicioId = await this.model6.update(exercicio, {
+            where: { id }
+        });
+        const intervencoesId = (await this.model7.update(intervensao, {
+            where: { id }
+        }));
+        const saudeSexualId = await this.model8.update(saude, {
+            where: { id }
+        });
+
+        return "Dados atualizados com sucesso";
+
+    }
+
+    async findPk(id: number) {
+        // const comportamental = await this.model.findByPk(id);
+        // const adesaoId = await this.model2.findOne({ where: { id: 1 } });
+        // const abusoSubstanciasId = await this.model3.findByPk(id);
+        // const autocuidadoId = await this.model4.findByPk(id);
+        // const diagnosticoId = await this.model5.findByPk(id);
+        // const exercicioId = await this.model6.findByPk(id);
+        // const intervencoesId = await this.model7.findByPk(id);
+        // const saudeSexualId = await this.model8.findByPk(id);
+        return {
+            adesao: adesaoId
+            // ...comportamental?.toJSON(), adesao: adesaoId//, abusoSubstanciasId, autocuidadoId,
+            //diagnosticoId, exercicioId, intervencoesId, saudeSexualId
         };
     }
 }

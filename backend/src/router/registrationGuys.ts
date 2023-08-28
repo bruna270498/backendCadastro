@@ -26,10 +26,13 @@ registrationRouter.put('/Therapeutic/:id', controllerAffectious.affectiousUpdate
 
 
 registrationRouter.post('/behavioral', behavioralController.BehavioralNew);
-//Psicossocial e suas associações ok
+registrationRouter.get('/behavioral', behavioralController.behavioralAll);
+registrationRouter.put('/behavioral/:id', behavioralController.updateBehavioral);
+registrationRouter.get('/behavioral/:id', behavioralController.findById);
+
 registrationRouter.post('/psychosocialCultural', controllerPsychosocial.PsychosocialNew);
-// registrationRouter.get('/psychosocialCultural/:id', controllerPsychosocial.findByPsychosocial);
-registrationRouter.get('/psychosocialCultural', controllerPsychosocial.updateOk);
+registrationRouter.get('/psychosocialCultural/:id', controllerPsychosocial.findByPsychosocial);
+registrationRouter.put('/psychosocialCultural/:id', controllerPsychosocial.updateOk);
 
 registrationRouter.post('/factors', controllerLabor.NewLabor);
 registrationRouter.put('/factors/:id', controllerLabor.laborUpdate);

@@ -23,7 +23,7 @@ export default class ControllerPsychosocial {
 
     async updateOk(req: Request, res: Response) {
         const { id } = req.params;
-        const psicossocial = await this.factorPsychosocial.teste();
+        const psicossocial = await this.factorPsychosocial.updatePsicossocial(+id, req.body);
         return res.status(200).json(psicossocial);
     }
 };

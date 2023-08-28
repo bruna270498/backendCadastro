@@ -2,7 +2,9 @@ import { DataTypes, Model, Optional } from 'sequelize';
 import db from '..'; // Importe a instância do Sequelize já configurada
 import Comportamentais from './comportamental';
 
-class ExercicioFisico extends Model { }
+class ExercicioFisico extends Model {
+    id: any;
+}
 
 ExercicioFisico.init(
     {
