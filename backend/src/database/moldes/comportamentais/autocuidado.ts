@@ -2,7 +2,9 @@ import { DataTypes, Model, Optional } from 'sequelize';
 import db from '..';
 import Comportamentais from './comportamental';
 
-class Autocuidado extends Model { }
+class Autocuidado extends Model {
+    [x: string]: any;
+}
 
 Autocuidado.init(
     {

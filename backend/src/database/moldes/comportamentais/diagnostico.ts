@@ -2,7 +2,9 @@ import { DataTypes, Model, Optional } from 'sequelize';
 import db from '..';
 import Comportamentais from './comportamental';
 
-class DiagnosticoComportamental extends Model { }
+class DiagnosticoComportamental extends Model {
+    id: any;
+}
 
 DiagnosticoComportamental.init(
     {

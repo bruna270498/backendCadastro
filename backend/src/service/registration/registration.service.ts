@@ -30,6 +30,6 @@ export default class ServiceRegistrationGuys {
             return updatedLaborRows;
         }
 
-        return "Usuário não encontrado"; // Indica que o objeto não foi encontrado ou não foi atualizado
+        return "Usuário não encontrado";
     }
 }

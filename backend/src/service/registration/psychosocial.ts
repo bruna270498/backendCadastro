@@ -107,58 +107,30 @@ export default class FactorPsychosocial {
         return psicossocial;
     }
 
-    async updatePsicossocial(id: number) {
-        // const { conhecimento, comunicacao, aceitacaoAdaptacao, socioeconomico,
-        //     integracaoSocial, saudeEmocional, autoimagem, autoestima, crencaEspiritual,
-        //     crencaReligiosa, diagnostico, intervencao
-        // } = psicossocial;
+    async updatePsicossocial(id: number, body) {
+        const { conhecimento, comunicacao, aceitacaoAdaptacao, socioeconomico,
+            integracaoSocial, saudeEmocional, autoimagem, autoestima, crencaEspiritual,
+            crencaReligiosa, diagnostico, intervencao
+        } = body;
 
-        //const psicossocialI = await this.model.findByPk(id);
-        // if (!psicossocialI) {
-        //     return "id não encontrado";
-        // };
+        const psicossocialI = await this.model.findByPk(id);
+        if (!psicossocialI) {
+            return "id não encontrado";
+        };
+        psicossocialI.update(conhecimento, { where: { id } });
+        await this.model2.update(comunicacao, { where: { id } });
+        await this.model3.update(aceitacaoAdaptacao, { where: { id } });
+        await this.model4.update(socioeconomico, { where: { id } });
+        await this.model5.update(integracaoSocial, { where: { id } });
+        await this.model6.update(saudeEmocional, { where: { id } });
+        await this.model7.update(autoimagem, { where: { id } });
+        await this.model8.update(autoestima, { where: { id } });
+        await this.model10.update(crencaReligiosa, { where: { id } });
+        await this.model9.update(crencaEspiritual, { where: { id } });
+        await this.model11.update(diagnostico, { where: { id } });
+        await this.model12.update(intervencao, { where: { id } });
 
-        // const { aceitacaoAdaptacaoId, autoEstimaId, autoImagemId,
-        //     comunicacaoId, crencaEspiritualId, crencaReligiosaId,
-        //     diagnosticoId, interacaoSocialId, saudeEmocionalId,
-        //     socioeconomicoId, intervencaoId } = psicossocialI.toJSON();
-
-        // const comunicacaoOk = await this.model2.findAll();
-        // const aceitacaoOk = await this.model3.findByPk(1);
-        // const socioeconomicoOk = await this.model4.findByPk(socioeconomicoId);
-        // const integracao = await this.model5.findByPk(interacaoSocialId);
-        // const saudeEmocionalOk = await this.model6.findByPk(saudeEmocionalId);
-        // const autoimagemOk = await this.model7.findByPk(autoImagemId);
-        // const autoestimaOk = await this.model8.findByPk(autoEstimaId);
-        // const religiosa = await this.model10.findByPk(crencaReligiosaId);
-        // const espiritual = await this.model9.findByPk(crencaEspiritualId);
-        // const diagnosticoOk = await this.model11.findByPk(diagnosticoId);
-        // const intervencaoOk = await this.model12.findAll();
-
-        // await psicossocialI.update(conhecimento);
-        // await comunicacaoOk?.update(comunicacao);
-        // await aceitacaoOk?.update(aceitacaoAdaptacao);
-        // await socioeconomicoOk?.update(socioeconomico);
-        // await integracao?.update(integracaoSocial);
-        // await saudeEmocionalOk?.update(saudeEmocional);
-        // await autoimagemOk?.update(autoimagem);
-        // await autoestimaOk?.update(autoestima);
-        // await religiosa?.update(crencaReligiosa);
-        // await espiritual?.update(crencaEspiritual);
-        // await diagnosticoOk?.update(diagnostico);
-        // await intervencaoOk?.update(intervencao);
-
-        // return {
-        //     // ...psicossocialI, ...comunicacaoOk, ...aceitacaoOk, ...socioeconomicoOk, ...autoimagemOk,
-        //     // ...autoestimaOk, ...religiosa, ...espiritual, ...diagnosticoOk, ...intervencaoOk,
-        //     // ...saudeEmocional, ...integracao
-        // }
-        return 1
-    }
-
-    async teste() {
-
-        return this.model.findAll()
+        return "Dados atualizados com sucesso";
     }
 };
 
