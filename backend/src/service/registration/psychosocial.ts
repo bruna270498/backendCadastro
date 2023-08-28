@@ -40,7 +40,7 @@ export default class FactorPsychosocial {
         this.model11 = DiagnosticoPsicossocial;
         this.model12 = IntervencaoPsicossocial;
     }
-    async newPsychosocial(psychosocial) {
+    async newPsychosocial(psychosocial: { conhecimento: any; comunicacao: any; aceitacaoAdaptacao: any; socioeconomico: any; integracaoSocial: any; saudeEmocional: any; autoimagem: any; autoestima: any; crencaEspiritual: any; crencaReligiosa: any; diagnostico: any; intervencao: any; }) {
         const { conhecimento, comunicacao, aceitacaoAdaptacao, socioeconomico,
             integracaoSocial, saudeEmocional, autoimagem, autoestima, crencaEspiritual,
             crencaReligiosa, diagnostico, intervencao
@@ -107,7 +107,7 @@ export default class FactorPsychosocial {
         return psicossocial;
     }
 
-    async updatePsicossocial(id: number, body) {
+    async updatePsicossocial(id: number, body: { conhecimento: any; comunicacao: any; aceitacaoAdaptacao: any; socioeconomico: any; integracaoSocial: any; saudeEmocional: any; autoimagem: any; autoestima: any; crencaEspiritual: any; crencaReligiosa: any; diagnostico: any; intervencao: any; }) {
         const { conhecimento, comunicacao, aceitacaoAdaptacao, socioeconomico,
             integracaoSocial, saudeEmocional, autoimagem, autoestima, crencaEspiritual,
             crencaReligiosa, diagnostico, intervencao
