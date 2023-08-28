@@ -25,6 +25,16 @@
         "ts-node": "10.7.0",
         "typescript": "^5.1.6"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bruna270498/backendCadastro.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/bruna270498/backendCadastro/issues"
+    },
+    "homepage": "https://github.com/bruna270498/backendCadastro#readme",
     "dependencies": {
         "express": "4.17.1",
         "mysql2": "^2.3.3",

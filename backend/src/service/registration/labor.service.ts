@@ -18,7 +18,7 @@ export default class ServiceLabor {
         return creteLabor;
     }
 
-    async update(id: number, labor) {
+    async update(id: number, labor: { [x: string]: any; fatoresInterferemSono: any; }) {
         const { fatoresInterferemSono, ...rest } = labor;
         const newObj = {
             ...rest,

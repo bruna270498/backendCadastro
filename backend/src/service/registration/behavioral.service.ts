@@ -60,7 +60,7 @@ export default class FactorBehavioral {
         return await this.model.findAll();
     }
 
-    async updateBehavioral(id: number, body) {
+    async updateBehavioral(id: number, body: { comportamental: any; abusa: any; adesao: any; autocuidado: any; diagnostico: any; exercicio: any; intervensao: any; saude: any; }) {
         const { comportamental, abusa, adesao, autocuidado, diagnostico,
             exercicio, intervensao, saude } = body;
         const idBehavioral = await this.model.findByPk(id);
@@ -105,10 +105,11 @@ export default class FactorBehavioral {
         // const exercicioId = await this.model6.findByPk(id);
         // const intervencoesId = await this.model7.findByPk(id);
         // const saudeSexualId = await this.model8.findByPk(id);
-        return {
-            adesao: adesaoId
-            // ...comportamental?.toJSON(), adesao: adesaoId//, abusoSubstanciasId, autocuidadoId,
-            //diagnosticoId, exercicioId, intervencoesId, saudeSexualId
-        };
+        // return {
+        //     adesao: adesaoId
+        //     // ...comportamental?.toJSON(), adesao: adesaoId//, abusoSubstanciasId, autocuidadoId,
+        //     //diagnosticoId, exercicioId, intervencoesId, saudeSexualId
+        // };
+        return 'ok'
     }
 }
